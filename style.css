@@ -1,0 +1,175 @@
+/* Food Banco - estilo básico */
+
+:root {
+  --verde: #2f6b3a;
+  --verde-claro: #e8f1e4;
+  --texto: #222;
+  --fundo: #fafaf7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+/* Cabeçalho e menu */
+header {
+  background: var(--verde);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  text-decoration: underline;
+}
+
+nav h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Conteúdo principal */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Página inicial */
+.introduction-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.introduction-info article {
+  flex: 1 1 320px;
+}
+
+.introduction-info img {
+  flex: 1 1 320px;
+  max-width: 460px;
+}
+
+/* Página de projetos */
+.projetos {
+  display: grid;
+  gap: 2rem;
+}
+
+.project {
+  background: white;
+  border: 1px solid #dde5d8;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.project h2 {
+  margin: 0;
+  color: var(--verde);
+}
+
+.project h4 {
+  margin: 0.25rem 0 1rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.project img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+/* Rodapé */
+footer {
+  background: var(--verde-claro);
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+}
+
+footer h2 {
+  margin-top: 0;
+}
+
+address {
+  font-style: normal;
+}
+
+a {
+  color: var(--verde);
+}
+
+/* Formulário */
+.cadastro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.cadastro article {
+  flex: 1 1 280px;
+}
+
+fieldset {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+input[type='radio'] + label {
+  display: inline;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[type='tel'],
+select {
+  width: 100%;
+}
