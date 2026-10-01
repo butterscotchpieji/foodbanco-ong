@@ -1,83 +1,77 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header>
-      <h1>Food Banco</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="index.html">
-              <h3>Introdução</h3>
-            </a>
-          </li>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Banco</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Food Banco</h1>
+    <nav aria-label="Menu principal">
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Abrir ou fechar o menu" />
+      <label for="menu-toggle" class="menu-icone" aria-hidden="true">&#9776;</label>
 
-          <li>
-            <a href="projetos.html">
-              <h3>Projetos</h3>
-            </a>
-          </li>
+      <ul class="menu">
+        <li><a href="index.html" aria-current="page">Introdução</a></li>
 
-          <li>
-            <a href="cadastro.html">
-              <h3>Cadastro</h3>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+        <li class="tem-submenu">
+          <a href="projetos.html">Projetos</a>
+          <ul class="submenu">
+            <li><a href="projetos.html#resgate">Resgate de Alimentos</a></li>
+            <li><a href="projetos.html#mochila">Mochila Cheia</a></li>
+            <li><a href="projetos.html#expresso">Expresso Comunitário</a></li>
+          </ul>
+        </li>
 
-    <main>
-      <section class="introduction-info">
-        <article>
-          <h2>Quem somos?</h2>
-          <p>
-            O Food Banco é uma organização dedicada a combater a fome e o
-            desperdício de alimentos. Conectamos quem tem alimentos em bom
-            estado, mas que seriam descartados, com quem mais precisa deles.
-          </p>
-          <p>
-            Trabalhamos com o apoio de voluntários, empresas parceiras e
-            doadores individuais, recebendo, selecionando e distribuindo
-            alimentos para famílias e instituições da nossa comunidade.
-          </p>
-        </article>
+        <li><a href="cadastro.html">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="introduction-info">
+      <article>
+        <h2>Quem somos?</h2>
+        <p>
+          O Food Banco é uma organização dedicada a combater a fome e o
+          desperdício de alimentos. Conectamos quem tem alimentos em bom
+          estado, mas que seriam descartados, com quem mais precisa deles.
+        </p>
+        <p>
+          Trabalhamos com o apoio de voluntários, empresas parceiras e
+          doadores individuais, recebendo, selecionando e distribuindo
+          alimentos para famílias e instituições da nossa comunidade.
+        </p>
+      </article>
+      <picture>
+        <source srcset="images/foodbank-voluntarios.webp" type="image/webp" />
         <img
-          src="images/foodbank voluntarios.jpg"
+          src="images/foodbank-voluntarios.jpg"
           alt="Voluntários entregando alimentos"
         />
-      </section>
+      </picture>
+    </section>
+  </main>
 
-      <!-- reference -->
-      <!-- <section>
-      <article></article>
-
-        <article></article>
-      </section> -->
-    </main>
-
-    <footer>
-      <h2>Contato</h2>
-      <address>
-        <p>
-          <strong>Food Banco</strong><br />
-          Rua Borel, 123 - Centro<br />
-          São Paulo - SP
-        </p>
-        <p>
-          E-mail:
-          <a href="mailto:contato@foodbanco.com">contato@foodbanco.com</a>
-        </p>
-        <p>
-          Telefone:
-          <a href="tel:+5511999999999">(11) 99999-9999</a>
-        </p>
-      </address>
-    </footer>
-  </body>
+  <footer>
+    <h2>Contato</h2>
+    <address>
+      <p>
+        <strong>Food Banco</strong><br />
+        Rua Borel, 123 - Centro<br />
+        São Paulo - SP
+      </p>
+      <p>
+        E-mail:
+        <a href="mailto:contato@foodbanco.com">contato@foodbanco.com</a>
+      </p>
+      <p>
+        Telefone:
+        <a href="tel:+5511999999999">(11) 99999-9999</a>
+      </p>
+    </address>
+  </footer>
+</body>
 </html>

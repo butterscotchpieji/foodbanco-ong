@@ -1,10 +1,52 @@
-/* Food Banco - estilo básico */
+/* ==========================================================
+   Food Banco - Design System
+   ========================================================== */
 
 :root {
-  --verde: #2f6b3a;
-  --verde-claro: #e8f1e4;
-  --texto: #222;
-  --fundo: #fafaf7;
+  /* Cores primárias (verde) */
+  --cor-primaria: #2f6b3a;
+  --cor-primaria-escura: #1f4a28;
+  --cor-primaria-clara: #e8f1e4;
+
+  /* Cores secundárias (terracota) */
+  --cor-secundaria: #b34a12;
+  --cor-secundaria-clara: #fdeede;
+  --cor-destaque: #f2b705;
+
+  /* Neutros */
+  --cor-texto: #222222;
+  --cor-texto-suave: #555555;
+  --cor-borda: #dde5d8;
+  --cor-fundo: #fafaf7;
+  --cor-superficie: #ffffff;
+
+  /* Tipografia: 5 níveis (escala de 1.25) */
+  --fonte-base: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-sm: 0.875rem;  /* 14px */
+  --fs-base: 1rem;    /* 16px */
+  --fs-md: 1.25rem;   /* 20px */
+  --fs-lg: 1.75rem;   /* 28px */
+  --fs-xl: 2.25rem;   /* 36px */
+
+  /* Espaçamentos: escala modular baseada em 8px */
+  --espaco-xs: 0.25rem; /* 4px */
+  --espaco-sm: 0.5rem;  /* 8px */
+  --espaco-md: 1rem;    /* 16px */
+  --espaco-lg: 1.5rem;  /* 24px */
+  --espaco-xl: 2rem;    /* 32px */
+  --espaco-2xl: 3rem;   /* 48px */
+
+  /* Feedback (sucesso e erro) */
+  --cor-sucesso: #1b7a3d;
+  --cor-sucesso-clara: #e6f4ea;
+  --cor-erro: #b3261e;
+  --cor-erro-clara: #fdeceb;
+
+  /* Grid */
+  --grid-colunas: 12;
+
+  /* Outros */
+  --raio: 8px;
 }
 
 * {
@@ -13,105 +55,108 @@
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: var(--fonte-base);
+  font-size: var(--fs-base);
   line-height: 1.6;
-  color: var(--texto);
-  background: var(--fundo);
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+}
+
+a {
+  color: var(--cor-primaria);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--cor-primaria-escura);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--raio);
+}
+
+picture {
+  display: contents;
 }
 
 /* Cabeçalho e menu */
 header {
-  background: var(--verde);
-  color: white;
-  padding: 1rem 2rem;
+  background: var(--cor-primaria);
+  color: var(--cor-superficie);
+  padding: var(--espaco-md);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--espaco-md);
 }
 
 header h1 {
   margin: 0;
-  font-size: 1.6rem;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 1.5rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-}
-
-nav a:hover,
-nav a:focus-visible {
-  text-decoration: underline;
-}
-
-nav h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--fs-lg);
 }
 
 /* Conteúdo principal */
 main {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: var(--espaco-lg) var(--espaco-md);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+main h2 {
+  font-size: var(--fs-lg);
+  color: var(--cor-primaria);
 }
 
 /* Página inicial */
-.introduction-info {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 2rem;
+/* Grid de 12 colunas (base: celular, tudo em 12 colunas) */
+.introduction-info,
+.projetos,
+.cadastro {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-colunas), 1fr);
+  gap: var(--espaco-lg);
 }
 
-.introduction-info article {
-  flex: 1 1 320px;
+.introduction-info {
+  align-items: center;
+}
+
+.introduction-info article,
+.introduction-info img,
+.project,
+.cadastro article {
+  grid-column: span 12;
 }
 
 .introduction-info img {
-  flex: 1 1 320px;
-  max-width: 460px;
+  width: 100%;
 }
 
 /* Página de projetos */
-.projetos {
-  display: grid;
-  gap: 2rem;
-}
-
 .project {
-  background: white;
-  border: 1px solid #dde5d8;
-  border-radius: 8px;
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-lg);
 }
 
 .project h2 {
   margin: 0;
-  color: var(--verde);
 }
 
-.project h4 {
-  margin: 0.25rem 0 1rem;
+.project h3 {
+  margin: var(--espaco-xs) 0 var(--espaco-md);
+  font-size: var(--fs-md);
   font-weight: 500;
-  font-style: italic;
+  color: var(--cor-secundaria);
 }
 
 .project img {
@@ -120,56 +165,593 @@ img {
   max-width: 360px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  margin: 0 auto;
-}
-
-/* Rodapé */
-footer {
-  background: var(--verde-claro);
-  padding: 1.5rem 2rem;
-  margin-top: 2rem;
-}
-
-footer h2 {
-  margin-top: 0;
-}
-
-address {
-  font-style: normal;
-}
-
-a {
-  color: var(--verde);
+  margin: auto auto 0;
 }
 
 /* Formulário */
-.cadastro {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.cadastro article {
-  flex: 1 1 280px;
-}
-
 fieldset {
-  margin-bottom: 1rem;
+  margin-bottom: var(--espaco-md);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+}
+
+legend {
+  font-weight: 600;
+  color: var(--cor-primaria);
 }
 
 label {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: var(--espaco-sm);
 }
 
-input[type='radio'] + label {
+input[type="radio"] + label {
   display: inline;
 }
 
-input[type='text'],
-input[type='email'],
-input[type='date'],
-input[type='tel'],
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
 select {
   width: 100%;
+  padding: var(--espaco-sm);
+  border: 1px solid var(--cor-texto-suave);
+  border-radius: var(--espaco-xs);
+  font: inherit;
+}
+
+button {
+  padding: var(--espaco-sm) var(--espaco-lg);
+  border: none;
+  border-radius: var(--espaco-xs);
+  background: var(--cor-primaria);
+  color: var(--cor-superficie);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--cor-primaria-escura);
+}
+
+/* Rodapé */
+footer {
+  background: var(--cor-primaria-clara);
+  padding: var(--espaco-lg) var(--espaco-md);
+  margin-top: var(--espaco-xl);
+}
+
+footer h2 {
+  margin-top: 0;
+  font-size: var(--fs-md);
+}
+
+address {
+  font-style: normal;
+  font-size: var(--fs-sm);
+}
+
+/* ==========================================================
+   Breakpoints (mobile-first, 5 cenários)
+   ========================================================== */
+
+/* 1) Celulares grandes (480px+): mais respiro nas laterais */
+@media (min-width: 480px) {
+  header,
+  footer {
+    padding-left: var(--espaco-xl);
+    padding-right: var(--espaco-xl);
+  }
+
+  main {
+    padding: var(--espaco-xl) var(--espaco-lg);
+  }
+}
+
+/* 2) Tablets pequenos (600px+): formulário em 2 colunas (6 + 6) */
+@media (min-width: 600px) {
+  .cadastro article {
+    grid-column: span 6;
+  }
+}
+
+/* 3) Tablets (768px+): intro em 7 + 5 e projetos em 2 colunas (6 + 6) */
+@media (min-width: 768px) {
+  header h1 {
+    font-size: var(--fs-xl);
+  }
+
+  .introduction-info article {
+    grid-column: span 7;
+  }
+
+  .introduction-info img {
+    grid-column: span 5;
+  }
+
+  .project {
+    grid-column: span 6;
+  }
+
+  .project:last-child:nth-child(odd) {
+    grid-column: span 12;
+  }
+}
+
+/* 4) Desktops (1024px+): projetos em 3 colunas (4 + 4 + 4) */
+@media (min-width: 1024px) {
+  .project,
+  .project:last-child:nth-child(odd) {
+    grid-column: span 4;
+  }
+
+  .introduction-info,
+  .projetos,
+  .cadastro {
+    gap: var(--espaco-xl);
+  }
+}
+
+/* 5) Telas panorâmicas (1440px+): conteúdo mais largo e mais espaço */
+@media (min-width: 1440px) {
+  main {
+    max-width: 1280px;
+    padding: var(--espaco-2xl) var(--espaco-xl);
+  }
+
+  .introduction-info,
+  .projetos,
+  .cadastro {
+    gap: var(--espaco-2xl);
+  }
+}
+
+/* ==========================================================
+   Menu responsivo (hambúrguer + dropdown)
+   ========================================================== */
+
+header {
+  position: relative;
+}
+
+/* Checkbox escondido, mas ainda acessível pelo teclado */
+.menu-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.menu-icone {
+  display: block;
+  padding: var(--espaco-xs) var(--espaco-sm);
+  border: 2px solid transparent;
+  border-radius: var(--espaco-xs);
+  font-size: var(--fs-lg);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.menu-toggle:focus-visible + .menu-icone {
+  border-color: var(--cor-superficie);
+}
+
+/* Listas do menu e do submenu */
+.menu,
+.submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Celular: painel escondido sob o cabeçalho */
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: var(--cor-primaria-escura);
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: max-height 0.3s ease, visibility 0.3s;
+}
+
+/* Hambúrguer marcado: abre o painel */
+.menu-toggle:checked ~ .menu {
+  max-height: 600px;
+  visibility: visible;
+}
+
+.menu a {
+  display: block;
+  padding: var(--espaco-sm) var(--espaco-md);
+  color: var(--cor-superficie);
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  background: var(--cor-primaria);
+}
+
+/* No celular o submenu aparece sempre, recuado, dentro do painel */
+.submenu a {
+  padding-left: var(--espaco-xl);
+  font-size: var(--fs-sm);
+}
+
+/* Desktop e tablets: menu horizontal com dropdown */
+@media (min-width: 768px) {
+  .menu-toggle,
+  .menu-icone {
+    display: none;
+  }
+
+  .menu {
+    position: static;
+    display: flex;
+    gap: var(--espaco-lg);
+    max-height: none;
+    overflow: visible;
+    visibility: visible;
+    background: none;
+  }
+
+  .menu a {
+    padding: var(--espaco-xs) 0;
+  }
+
+  .menu a:hover,
+  .menu a:focus-visible {
+    background: none;
+    text-decoration: underline;
+  }
+
+  .tem-submenu {
+    position: relative;
+  }
+
+  /* Submenu escondido por padrão */
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 14rem;
+    background: var(--cor-primaria-escura);
+    border-radius: var(--raio);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  }
+
+  .submenu a {
+    padding: var(--espaco-sm) var(--espaco-md);
+  }
+
+  /* Aparece ao passar o mouse ou ao navegar com o teclado */
+  .tem-submenu:hover > .submenu,
+  .tem-submenu:focus-within > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
+
+/* ==========================================================
+   Estados interativos (botões e formulários)
+   ========================================================== */
+
+/* ---------- Botões ---------- */
+button {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.1s ease;
+}
+
+/* hover: fundo mais escuro e sombra maior */
+button:hover {
+  background-color: var(--cor-primaria-escura);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* focus (teclado): anel de foco bem visível */
+button:focus-visible {
+  background-color: var(--cor-primaria-escura);
+  outline: 3px solid var(--cor-primaria-escura);
+  outline-offset: 3px;
+}
+
+/* active: parece "afundar" ao clicar */
+button:active {
+  background-color: var(--cor-primaria-escura);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+  transform: translateY(1px);
+}
+
+/* disabled: cinza, sem sombra e sem resposta ao mouse */
+button:disabled {
+  background-color: var(--cor-borda);
+  color: var(--cor-texto-suave);
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* ---------- Campos de formulário ---------- */
+input,
+select {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+input[type="radio"] {
+  accent-color: var(--cor-primaria);
+}
+
+/* focus: borda verde e halo claro */
+input:focus,
+select:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px var(--cor-primaria-clara);
+}
+
+input:disabled,
+select:disabled {
+  background-color: var(--cor-borda);
+  color: var(--cor-texto-suave);
+  cursor: not-allowed;
+}
+
+/* Validação visual: só aparece depois que o usuário interage */
+input:user-valid,
+select:user-valid {
+  border-color: var(--cor-sucesso);
+}
+
+input:user-invalid,
+select:user-invalid {
+  border-color: var(--cor-erro);
+  background-color: var(--cor-erro-clara);
+}
+
+input:user-invalid:focus,
+select:user-invalid:focus {
+  box-shadow: 0 0 0 3px var(--cor-erro-clara);
+}
+
+/* Ícones de sucesso (✓) e erro (✗), para não depender só da cor */
+input[type="text"]:user-valid,
+input[type="email"]:user-valid,
+input[type="tel"]:user-valid,
+input[type="text"]:user-invalid,
+input[type="email"]:user-invalid,
+input[type="tel"]:user-invalid {
+  padding-right: 2.25rem;
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  background-size: 1.1rem;
+}
+
+input[type="text"]:user-valid,
+input[type="email"]:user-valid,
+input[type="tel"]:user-valid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b7a3d' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");
+}
+
+input[type="text"]:user-invalid,
+input[type="email"]:user-invalid,
+input[type="tel"]:user-invalid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b3261e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E");
+}
+
+/* ---------- Cartões de projeto ---------- */
+.project {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.project:hover {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================
+   Componentes de feedback (badges, alertas, toast, modal)
+   ========================================================== */
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-block;
+  padding: var(--espaco-xs) var(--espaco-sm);
+  border-radius: 999px;
+  background: var(--cor-texto-suave);
+  color: var(--cor-superficie);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.badge--sucesso { background: var(--cor-sucesso); }
+.badge--erro    { background: var(--cor-erro); }
+.badge--aviso   { background: var(--cor-secundaria); }
+.badge--info    { background: var(--cor-primaria); }
+
+/* ---------- Variações de cor (alertas e toasts) ---------- */
+.alerta--sucesso,
+.toast--sucesso {
+  --fb-cor: var(--cor-sucesso);
+  --fb-fundo: var(--cor-sucesso-clara);
+  --fb-icone: "\2713";
+}
+
+.alerta--erro,
+.toast--erro {
+  --fb-cor: var(--cor-erro);
+  --fb-fundo: var(--cor-erro-clara);
+  --fb-icone: "\2717";
+}
+
+.alerta--aviso,
+.toast--aviso {
+  --fb-cor: var(--cor-secundaria);
+  --fb-fundo: var(--cor-secundaria-clara);
+  --fb-icone: "!";
+}
+
+.alerta--info,
+.toast--info {
+  --fb-cor: var(--cor-primaria);
+  --fb-fundo: var(--cor-primaria-clara);
+  --fb-icone: "i";
+}
+
+/* ---------- Alertas (mensagem fixa na página) ---------- */
+.alerta,
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espaco-sm);
+  padding: var(--espaco-md);
+  border-left: 4px solid var(--fb-cor);
+  border-radius: var(--raio);
+  background: var(--fb-fundo);
+  color: var(--cor-texto);
+}
+
+.alerta {
+  margin: var(--espaco-md) 0;
+}
+
+.alerta::before,
+.toast::before {
+  content: var(--fb-icone);
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--fb-cor);
+  color: var(--cor-superficie);
+  font-weight: 700;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.alerta__titulo {
+  display: block;
+  color: var(--fb-cor);
+}
+
+.alerta p,
+.toast p {
+  margin: 0;
+}
+
+/* ---------- Toast (notificação que some sozinha) ---------- */
+.toast-area {
+  position: fixed;
+  right: var(--espaco-md);
+  bottom: var(--espaco-md);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-sm);
+  width: min(24rem, calc(100vw - 2rem));
+}
+
+.toast {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  animation: toast-entrar 0.3s ease, toast-sair 0.3s ease 4.7s forwards;
+}
+
+/* Exemplo fixo, sem animação (útil para capturas de tela) */
+.toast--estatico {
+  animation: none;
+  max-width: 24rem;
+}
+
+@keyframes toast-entrar {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes toast-sair {
+  to { opacity: 0; transform: translateX(16px); visibility: hidden; }
+}
+
+/* ---------- Modal (elemento nativo <dialog>) ---------- */
+.modal {
+  width: min(32rem, calc(100vw - 2rem));
+  padding: 0;
+  border: none;
+  border-radius: var(--raio);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  color: var(--cor-texto);
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.modal__cabecalho {
+  padding: var(--espaco-md) var(--espaco-lg);
+  background: var(--cor-primaria);
+  color: var(--cor-superficie);
+}
+
+.modal__titulo {
+  margin: 0;
+  font-size: var(--fs-md);
+  color: inherit;
+}
+
+.modal__corpo {
+  padding: var(--espaco-lg);
+}
+
+.modal__corpo p {
+  margin: 0;
+}
+
+.modal__rodape {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--espaco-sm);
+  padding: var(--espaco-md) var(--espaco-lg);
+  border-top: 1px solid var(--cor-borda);
+  background: var(--cor-fundo);
+}
+
+/* Botão secundário (para "Cancelar") */
+.botao-secundario {
+  background: var(--cor-superficie);
+  color: var(--cor-primaria);
+  border: 2px solid var(--cor-primaria);
+  box-shadow: none;
+}
+
+.botao-secundario:hover,
+.botao-secundario:focus-visible,
+.botao-secundario:active {
+  background: var(--cor-primaria-clara);
+  color: var(--cor-primaria-escura);
+  box-shadow: none;
+}
+
+/* Demonstração */
+.demo-grupo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-sm);
+  align-items: center;
 }
